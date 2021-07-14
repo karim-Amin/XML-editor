@@ -1,0 +1,21 @@
+<users>
+	<user>
+		<id>1
+		
+		<name>kareem</name>
+		<posts>
+			<post>this post</post>
+			<post>this is anthor post</post>
+		</posts>
+		<followers>
+			<follower>
+				<name>2</id>
+			</follower>
+			<follower>
+				<id>4</name>
+			</follower>
+		
+	</user>
+</users>
+
+		
