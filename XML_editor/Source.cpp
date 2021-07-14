@@ -27,6 +27,7 @@ vector <string> read_xml_file() {
 		}
 		file.close();
 		return v;
+		
 	}
 	else {
 		cout << "error when opening the file";
