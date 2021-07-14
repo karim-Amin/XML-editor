@@ -67,8 +67,24 @@ vector<string> fix_inline(vector <string> xml_data) {
 	return xml_data;
 }
 vector<string> fix_expersion_error(vector<string> xml_data) {
+	stack<char> exp;
+	int start_index;
+	int length = 0;
 	for (int i = 0; i < xml_data.size(); i++) {
-
+		string xml_line = xml_data[i];
+		int line_size = xml_line.size();
+		if (xml_line[line_size - 1] != '>'&& xml_line[line_size - 1] != '\t') {
+			cout << "there is experssion error in line " << i<<endl;
+			int count = line_size - 1;
+			while (xml_line[count] != '>') {
+				length++;
+				exp.push(xml_line[count]);
+				count--;
+			}
+			start_index = count+1;
+			// erase the expersion
+			xml_data[i].erase(start_index, length);
+		}
 	}
 	return xml_data;
 }
@@ -166,9 +182,13 @@ int main() {
 	vector<string> xml_data;
 	xml_data = read_xml_file();
 	detect_syn_error(xml_data);
-	/*xml_data = fix_outline(xml_data);
+	xml_data=fix_expersion_error(xml_data);
+	xml_data = fix_outline(xml_data);
 	xml_data = fix_inline(xml_data);
-	Create_correct_xml_file(xml_data);*/
-	
+	//Create_correct_xml_file(xml_data);
+	for (int i = 0; i < xml_data.size(); i++) {
+		cout << xml_data[i] << endl;
+	}
+	return 0;
 	return 0;
 }
